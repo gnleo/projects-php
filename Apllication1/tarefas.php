@@ -1,3 +1,5 @@
+<!-- PROJETO WEB 1 -->
+
 	
 <!-- VERIFICA AS VARIAVEIS PARA INSERCAO NO BANCO DE DADOS -->
 
@@ -5,8 +7,8 @@
 
 	session_start();
 
-	include "banco.php"; # inclui funcoes com banco de dados
-	include "procedimentosTarefas.php"; # inclui funcoes de tratamentos
+	include "1_banco.php"; # inclui funcoes com banco de dados
+	include "1_procedimentosTarefas.php"; # inclui funcoes de tratamentos
 
 	$exibir_tabela = true;
 	$erro = false;
@@ -15,7 +17,7 @@
 	if(verifica_post()){
 		$tarefa = array();
 
-		# verifica se o campo foi preenchido corretamente
+		# verifica se o campo foi preenchido
 		if(isset($_POST['nome']) && strlen($_POST['nome']) > 0){
 			$tarefa['nome'] = $_POST['nome'];
 		} else{
@@ -65,7 +67,7 @@
 	# inicializa uma tarefa para controle do primeiro acesso
 	$tarefa = array('id'=> 0,'nome'=> (isset($_POST['nome'])) ? $_POST['nome'] : "", 'descricao'=> (isset($_POST['descricao'])) ? $_POST['descricao'] : "", 'prazo'=> (isset($_POST['prazo'])) ? data($_POST['prazo']) : "", 'prioridade'=> (isset($_POST['prioridade'])) ? $_POST['prioridade'] : 1, 'concluida'=> (isset($_POST['concluida'])) ? $_POST['concluida'] : "");
 
-	include "template.php"; # inclusao feita aqui por causa do uso da variavel $lista_tarefas que foi incializada acima
+	include "1_template.php"; # inclusao feita aqui por causa do uso da variavel $lista_tarefas que foi incializada acima
 
 ?>
 

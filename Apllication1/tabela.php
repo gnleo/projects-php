@@ -12,12 +12,13 @@
 
 	<?php foreach ($lista_tarefas as $tarefa): ?>
 		<tr>
-			<td> <?php echo $tarefa['nome']; ?> </td>
+			<td> <a href="1_anexos.php?id=<?php echo $tarefa['id'];?>"> <?php echo $tarefa['nome']; ?> </a></td>
 			<td> <?php echo $tarefa['descricao']; ?> </td>
-			<td> <?php echo traduz_data_exibicao($tarefa['prazo']); ?> </td>
-			<td> <?php echo traduz_prioridade($tarefa['prioridade']); ?> </td>
-			<td> <?php echo traduz_concluida($tarefa['concluida']); ?> </td>
-			<td><a href="editar.php?id=<?php echo $tarefa['id'];?>">Editar</a> <a href="remover.php?id=<?php echo $tarefa['id'];?>">Remover</a></td>
+			<td class="td-center"> <?php echo traduz_data_exibicao($tarefa['prazo']); ?> </td>
+			<td class="td-center"> <?php echo traduz_prioridade($tarefa['prioridade']); ?> </td>
+			<td class="td-center"> <?php echo traduz_concluida($tarefa['concluida']); ?> </td>
+			<td class="td-center"> <a href="1_editar.php?id=<?php echo $tarefa['id'];?>">Editar</a> <a href="1_remover.php?id=<?php echo $tarefa['id'];?>">Remover</a> </td>
 		</tr>
 	<?php endforeach; ?>
 </table>
+

@@ -8,7 +8,7 @@
 	$senha = '';
 	$banco = '';
 
-	$conexao = mysqli_connect($servidor, $usuario,$senha, $banco);
+	$conexao = mysqli_connect($servidor, $usuario, $senha, $banco);
 
 	if(mysqli_connect_errno($conexao)){
 		echo 'Problemas na conexao';
@@ -55,6 +55,24 @@
 	function remover_tarefa($conexao, $id){
 		$sqlRemover = "delete from tarefas where id = $id";
 		mysqli_query($conexao, $sqlRemover);
+	}
+
+	function gravar_anexo($conexao, $anexo){
+		$sqlInsere = "insert into anexos(tarefa_id, nome, arquivo) values({$anexo['tarefa_id']}, '{$anexo['nome']}', '{$anexo['arquivo']}');";
+		mysqli_query($conexao, $sqlInsere);
+	}
+
+	function buscar_anexos($conexao, $tarefa_id){
+		$sqlBusca = "select * from anexos where tarefa_id = {$tarefa_id};";
+		$resultado = mysqli_query($conexao, $sqlBusca);
+
+		$anexos = array();
+
+		while($anexo = mysqli_fetch_assoc($resultado)){
+			$anexos[] = $anexo;
+		}
+
+		return $anexos;
 	}
 
 ?>

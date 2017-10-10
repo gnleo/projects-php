@@ -9,7 +9,7 @@
 			case 1:
 				$prioridade = 'Baixa';
 				break;
-			
+
 			case 2:
 				$prioridade = 'Media';
 				break;
@@ -54,7 +54,7 @@
 	function data($data){
 		if($data == ''){
 			return '';
-		} else {
+		} else{
 			return $data;
 		}
 	}
@@ -65,7 +65,6 @@
 		} else{
 			return "Não";
 		}
-
 	}
 
 	function verifica_post(){
@@ -92,5 +91,19 @@
 		$resultado = checkdate($mes, $dia, $ano);
 		return $resultado;
 	}
+
+	function tratar_anexo($anexo){
+		$padrao = '/^.+(\.pdf|\.zip)$/';
+		$resultado = preg_match($padrao, $anexo['name']);
+
+		if(! $resultado){
+			return false;
+		} else{
+			move_uploaded_file($anexo['tmp_name'], "anexos/{$anexo['name']}");
+			return true;
+		}
+
+	}
+
 
 ?>

@@ -3,8 +3,8 @@
 
 	session_start();
 
-	include "banco.php"; # inclui funcoes com banco de dados
-	include "procedimentosTarefas.php"; # inclui funcoes de tratamentos
+	include "1_banco.php"; # inclui funcoes com banco de dados
+	include "1_procedimentosTarefas.php"; # inclui funcoes de tratamentos
 
 	$exibir_tabela = false;
 	$erro = false;
@@ -66,6 +66,7 @@
 	$tarefa['prioridade'] = (isset($_POST['prioridade'])) ? $_POST['prioridade'] : $tarefa['prioridade'];
 	$tarefa['concluida'] = (isset($_POST['concluida'])) ? $_POST['concluida'] : $tarefa['concluida'];
 
-	include "template.php";
+	include "1_template.php";
 
 ?>
+
