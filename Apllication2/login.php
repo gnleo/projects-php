@@ -25,7 +25,6 @@
 		}
 	}
 
-
 	function verifica_post(){
 		if(count($_POST) > 0){
 			return true;
