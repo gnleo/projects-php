@@ -24,6 +24,12 @@
 		mysqli_query($conexao, $sqlInsereUsuario);
 	}
 
+	function buscar_dados_usuario($conexao, $id){
+		$sqlBusca = "select * from usuarios where id = $id;";
+		$sqlResultado = mysqli_query($conexao, $sqlBusca);
+		return $usuario = mysqli_fetch_assoc($sqlResultado);
+	}
+
 	// busca todas as questoes no banco de dados
 	function buscar_questoes($conexao, $id_usuario){
 		$sqlBusca = 'select * from questoes where id_usuario = ' .$id_usuario;
@@ -43,19 +49,19 @@
 	}
 	
 	function insere_questao($conexao, $questao){
-		$sqlInsere = "insert into questoes(id_usuario, enunciado, opcaoA, opcaoB, opcaoC, resposta) values('{$questao['id_usuario']}', '{$questao['enunciado']}', '{$questao['opcaoA']}', '{$questao['opcaoB']}', '{$questao['$opcaoC']}', '{$questao['$resposta']}');";
-		echo $sqlInsere;
+		$sqlInsere = "insert into questoes(id_usuario, enunciado, opcaoA, opcaoB, opcaoC, resposta) values({$questao['id_usuario']}, '{$questao['enunciado']}', '{$questao['opcaoA']}', '{$questao['opcaoB']}', '{$questao['opcaoC']}', '{$questao['resposta']}');";
+		mysqli_query($conexao, $sqlInsere);
 	}
 
-
 	function editar_questao($conexao, $questao){
-		$sqlEditar = "update questoes set enunciado='{$questao['enunciado']}', opcaoA='{$questao['opcaoA']}', opcaoB='{$questao['opcaoB']}', opcaoC='{$questao['$opcaoC']}', resposta='{$questao['$resposta']}' where id = '{$questao['id']}';";
+		$sqlEditar = "update questoes set enunciado='{$questao['enunciado']}', opcaoA='{$questao['opcaoA']}', opcaoB='{$questao['opcaoB']}', opcaoC='{$questao['opcaoC']}', resposta='{$questao['resposta']}' where id = '{$questao['id']}';";
 		mysqli_query($conexao, $sqlEditar);
 
 	}
 
 	function remover_questao($conexao, $id){
-		$sqlRemover = "delete from questoes where id = $id";
+		$sqlRemover = "delete from questoes where id = $id;";
 		mysqli_query($conexao, $sqlRemover);
 	}
+
 ?>

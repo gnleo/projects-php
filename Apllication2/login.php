@@ -1,10 +1,13 @@
 <!-- PROJETO WEB 2 -->
 
 <?php 
+	
+	session_start();
 
 	$erroLogin = null;
 	
 	include "2_conexaoBanco.php";
+
 
 	if(verifica_post()){
 		
@@ -20,10 +23,14 @@
 			$erroLogin = "Login ou senha incorreto!";
 		} else{
 			# entra na pagina principal do site
+			$_SESSION['logado'] = true;
+			$_SESSION['id-User'] = $usuario['id'];
+			sleep(2);
 			header('Location: apppescado.php');
 			die();
 		}
 	}
+
 
 	function verifica_post(){
 		if(count($_POST) > 0){
@@ -36,3 +43,4 @@
 	include "2_templateLogin.php";
 
 ?>
+

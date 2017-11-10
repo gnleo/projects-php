@@ -35,7 +35,7 @@
                     <a href="#modalCadastroUsuario" class="right" data-toggle="modal" data-target="#modalCadastroUsuario">Cadastre-se</a>
                 </div>
 
-                <button class="btn btn-lg btn-color btn-block" type="submit">Entrar</button>
+                <button id="btn-login" class="btn btn-lg btn-color btn-block" type="submit">Entrar</button>
             </form>
         </div>
 
@@ -66,9 +66,6 @@
             </div>
         </div>
 
-
-
-        <br><center><spam class="erro" id="resposta"></spam></center>
         
         <!-- acoes jquery -->
 
@@ -78,11 +75,10 @@
                     $.ajax({
                         url: '2_cadastro.php', 
                         type: 'POST',
-                        data: $("#form-cadastro").serialize()+ "&action=cadastrar",
+                        data: $("#form-cadastro").serialize() + "&action=cadastrar",
                         success: function(resultado){
                             $('#resposta').html(resultado);
                         }
-                            
                     });
                 });
             });
